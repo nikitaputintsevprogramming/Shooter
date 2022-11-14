@@ -13,12 +13,15 @@ public class MouseLook : MonoBehaviour
     public float speed = 2;
 
     public GameObject player;
+    public Animator PlayerAnimator;
 
 
     void Start() 
     {
         // Запрещаем указателю выходить за рамки окна игра
         Cursor.lockState = CursorLockMode.Locked; 
+
+        PlayerAnimator = player.GetComponent<Animator>();
     }
 
     void Update()
@@ -38,6 +41,38 @@ public class MouseLook : MonoBehaviour
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
         deltaMove = new Vector3(horizontalMove, 0, verticalMove) * speed * Time.deltaTime;
-        player.transform.Translate(deltaMove);
+        player.transform.Translate(deltaMove); 
+
+        PlayerController();     
+    }
+
+    void PlayerController()
+    {
+        if(verticalMove > 0)
+        {
+            if(Input.GetKey(KeyCode.LeftShift))
+            {
+                PlayerAnimator.SetInteger("Move", 2);
+                speed = 4;
+            }
+            
+            else 
+            {
+                PlayerAnimator.SetInteger("Move", 1);
+                speed = 2;
+            }
+        }
+
+        else if(verticalMove < 0)
+        {
+            PlayerAnimator.SetInteger("Move", -1);
+            speed = 2;
+        }
+
+        else
+        {
+            PlayerAnimator.SetInteger("Move", 0);
+            speed = 0;
+        }
     }
 }
