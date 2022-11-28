@@ -849,6 +849,7 @@ GameObject:
   - component: {fileID: 9167420631043738832}
   - component: {fileID: 4200375402064778928}
   - component: {fileID: 7034363853491941203}
+  - component: {fileID: 786064410904437806}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -924,6 +925,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &786064410904437806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2491269074814667792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53e85615320d9849b5417f98446414f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LVL2: {fileID: 0}
 --- !u!1 &2544151064155931409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,6 +2554,8 @@ MonoBehaviour:
   HitEffect: {fileID: 3566779607757178240, guid: 92212fd08e8e197488f10c2b72dffe24, type: 3}
   ShootAudio: {fileID: 2698606385128215180}
   ImpactForce: 1000
+  FireRate: 1
+  NextTimeToFire: 0
 --- !u!82 &2698606385128215180 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6911390207063247670, guid: 62ea6daabd4d3dd4e80ea9b59fee30a8, type: 3}

@@ -13,13 +13,19 @@ public class Gun : MonoBehaviour
     public ParticleSystem HitEffect;
     public AudioSource ShootAudio;
 
-    public float ImpactForce = 500f;
+    public float ImpactForce = 1000f;
+
+    // Перемнные для очереди стрельбы
+    public float FireRate = 1f;
+    public float NextTimeToFire = 0f;
 
     void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
+    {    
+        if(Input.GetMouseButtonDown(0) && Time.time >= NextTimeToFire)
         {
             Shoot();
+            NextTimeToFire = Time.time + FireRate; // 1f/FireRate
+            print(NextTimeToFire);
         }
     }
 
