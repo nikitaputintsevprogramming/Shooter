@@ -19,6 +19,8 @@ public class Gun : MonoBehaviour
     public float FireRate = 1f;
     public float NextTimeToFire = 0f;
 
+    public int ZombieDamage = 50;
+
     void Update()
     {    
         if(Input.GetMouseButtonDown(0) && Time.time >= NextTimeToFire)
@@ -40,6 +42,8 @@ public class Gun : MonoBehaviour
             Debug.Log(hit.collider.gameObject.name);
 
             Target target = hit.transform.GetComponent<Target>();
+            ZombieMove zombieMove = hit.transform.GetComponent<ZombieMove>();
+
             if(target != null)
             {
                 target.TakeDamage(MarkDamage);
@@ -48,6 +52,11 @@ public class Gun : MonoBehaviour
             if(hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(-hit.normal * ImpactForce);
+            }
+
+            if(zombieMove != null)
+            {
+                zombieMove.TakeDamage(ZombieDamage);
             }
 
             ParticleSystem CreateHit = Instantiate(HitEffect, hit.point, Quaternion.LookRotation(hit.normal));
