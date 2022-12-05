@@ -15,14 +15,38 @@ public class Gun : MonoBehaviour
 
     public float ImpactForce = 1000f;
 
+    // Кол-во патронов
+    public int BagAmmo = 0;
+    public int maxAmmo = 10;
+    public int currentAmmo;
+    public float reloadTime = 1f;
+
+    private bool isReloading = false;
+
     // Перемнные для очереди стрельбы
     public float FireRate = 1f;
     public float NextTimeToFire = 0f;
 
     public int ZombieDamage = 50;
 
+    void Start()
+    {
+        StartCoroutine(Reload());
+    }
+
     void Update()
     {    
+        if(isReloading) //=== true
+        {
+            return;
+        }
+
+        if(currentAmmo <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
         if(Input.GetMouseButtonDown(0) && Time.time >= NextTimeToFire)
         {
             Shoot();
@@ -31,10 +55,27 @@ public class Gun : MonoBehaviour
         }
     }
 
+    IEnumerator Reload()
+    {
+        if(BagAmmo > 0)
+        {
+            isReloading = true;
+
+            Debug.Log("Reloading...");
+            yield return new WaitForSeconds(reloadTime);
+            currentAmmo = maxAmmo;
+            BagAmmo = BagAmmo - maxAmmo;
+
+            isReloading = false;
+        }        
+    }
+
     void Shoot()
     {
+        currentAmmo --;
+
         ShootEffect.Play();
-        ShootAudio.Play();
+        ShootAudio.Play();        
 
         RaycastHit hit;
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))

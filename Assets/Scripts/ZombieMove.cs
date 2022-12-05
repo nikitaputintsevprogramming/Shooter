@@ -16,6 +16,10 @@ public class ZombieMove : MonoBehaviour
     void Start()
     {
         ZombieAnimator = gameObject.GetComponent<Animator>();
+        RigidbodyIsKinematicOn();
+        gameObject.GetComponent<CapsuleCollider>().enabled = true;
+        ZombieSpeed = 0.5f;
+        ZombieHealth = 100;
     }
 
     void Update()
@@ -28,6 +32,8 @@ public class ZombieMove : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             ZombieAnimator.SetBool("Attack", true);
+
+            other.gameObject.GetComponent<PlayerHealth>().TakePlayerDamage(10);
         }
     }
 
