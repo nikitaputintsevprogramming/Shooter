@@ -1170,9 +1170,10 @@ GameObject:
   - component: {fileID: 3388085113363913899}
   - component: {fileID: 8783366867539822289}
   - component: {fileID: 8801172159125784989}
+  - component: {fileID: 303168136}
   m_Layer: 0
   m_Name: YakuZombie
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1226,8 +1227,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19869ba9ef7e034fa0543cfee446aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   ZombieSpeed: 0.5
+  ZombieHealth: 100
+  GetRigidbodies: []
+--- !u!136 &303168136
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2616369115327628817}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2801294980606136885
 GameObject:
   m_ObjectHideFlags: 0

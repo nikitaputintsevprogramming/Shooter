@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7817033867601771384}
   m_Layer: 0
   m_Name: Pistol
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,6 +201,14 @@ MonoBehaviour:
   ShootEffect: {fileID: 1790516662435677934, guid: 1312567bd9c991143ac522749094a4aa, type: 3}
   HitEffect: {fileID: 3566779607757178240, guid: 92212fd08e8e197488f10c2b72dffe24, type: 3}
   ShootAudio: {fileID: 6911390207063247670}
+  ImpactForce: 1000
+  BagAmmo: 0
+  maxAmmo: 10
+  currentAmmo: 0
+  reloadTime: 1
+  FireRate: 1
+  NextTimeToFire: 0
+  ZombieDamage: 50
 --- !u!1001 &3272211933421303690
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieMove : MonoBehaviour
-{
-    public GameObject Player;
+{    
+    public Waves _waves;
+
+    private GameObject Player;
+    private GameObject AmmoBox;
+
     public float ZombieSpeed = 0.5f;
 
     public int ZombieHealth = 100;
@@ -14,8 +18,13 @@ public class ZombieMove : MonoBehaviour
     private AnimatorStateInfo ZombieStateInfo;
 
     void Start()
-    {
+    {        
+        _waves = FindObjectOfType<Waves>();
+
         ZombieAnimator = gameObject.GetComponent<Animator>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        AmmoBox = Resources.Load("Prefabs/PistolAmmo_Box") as GameObject;
+
         RigidbodyIsKinematicOn();
         gameObject.GetComponent<CapsuleCollider>().enabled = true;
         ZombieSpeed = 0.5f;
@@ -96,6 +105,10 @@ public class ZombieMove : MonoBehaviour
         {
             RigidbodyIsKinematicOff();
             gameObject.GetComponent<CapsuleCollider>().enabled = false;
+
+            Instantiate(AmmoBox.gameObject, gameObject.transform.position, Quaternion.identity); 
+
+            _waves.ZombieKillsOnWave++;
         }
     }
 }

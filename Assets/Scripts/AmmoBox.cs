@@ -9,7 +9,7 @@ public class AmmoBox : MonoBehaviour
 
     void Start()
     {
-        
+        gun = GameObject.FindGameObjectWithTag("Gun");
     }
     
     void OnTriggerEnter(Collider other) 

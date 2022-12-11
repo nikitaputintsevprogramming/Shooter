@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
     public float ImpactForce = 1000f;
 
     // Кол-во патронов
-    public int BagAmmo = 0;
+    public int BagAmmo = 10;
     public int maxAmmo = 10;
     public int currentAmmo;
     public float reloadTime = 1f;

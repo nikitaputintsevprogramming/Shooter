@@ -6,10 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {    
-    public Slider slider;
+    private Slider slider;
 
     public int playerHealth = 100;
     
+    void Start()
+    {
+        slider = FindObjectOfType<Slider>();
+    }
+
     void Update()
     {
         slider.value = playerHealth;

@@ -850,6 +850,8 @@ GameObject:
   - component: {fileID: 4200375402064778928}
   - component: {fileID: 7034363853491941203}
   - component: {fileID: 786064410904437806}
+  - component: {fileID: 1076450440}
+  - component: {fileID: 4777496033192613280}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -938,6 +940,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LVL2: {fileID: 0}
+--- !u!114 &1076450440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2491269074814667792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b9bec14cb6a1d438431c7c1fb7c6c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 100
+--- !u!114 &4777496033192613280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2491269074814667792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0326e0770cec0ed478c6950e76a886bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ZombieCount: []
+  maxZombiesOnWave: 10
+  ZombieKillsOnWave: 0
 --- !u!1 &2544151064155931409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,8 +2584,13 @@ MonoBehaviour:
   HitEffect: {fileID: 3566779607757178240, guid: 92212fd08e8e197488f10c2b72dffe24, type: 3}
   ShootAudio: {fileID: 2698606385128215180}
   ImpactForce: 1000
+  BagAmmo: 10
+  maxAmmo: 10
+  currentAmmo: 0
+  reloadTime: 1
   FireRate: 1
   NextTimeToFire: 0
+  ZombieDamage: 50
 --- !u!82 &2698606385128215180 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6911390207063247670, guid: 62ea6daabd4d3dd4e80ea9b59fee30a8, type: 3}

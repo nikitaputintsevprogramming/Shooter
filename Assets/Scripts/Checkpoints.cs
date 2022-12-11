@@ -8,6 +8,11 @@ public class Checkpoints : MonoBehaviour
     // Список наших чек-поинтов
     public GameObject LVL2;
 
+    void Start()
+    {
+        LVL2 = Resources.Load("Prefabs/CheckpointToLVL2") as GameObject;
+    }
+
     void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject == LVL2)
