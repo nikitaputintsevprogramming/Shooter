@@ -6,6 +6,8 @@ public class Gun : MonoBehaviour
 {
     public Camera cam ;
 
+
+
     public float range = 50;
     public float MarkDamage = 10;
 
@@ -35,7 +37,8 @@ public class Gun : MonoBehaviour
     }
 
     void Update()
-    {    
+    {            
+
         if(isReloading) //=== true
         {
             return;

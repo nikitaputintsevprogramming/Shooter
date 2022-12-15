@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
     public Vector2 turn;
-    public float sensitivity = 0.5f;
+    public float sensitivity = 2f;
 
     public Vector3 deltaMove;
     public float horizontalMove;

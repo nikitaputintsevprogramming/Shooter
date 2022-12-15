@@ -5,18 +5,18 @@ using UnityEngine;
 public class AmmoBox : MonoBehaviour
 {
     
-    public GameObject gun;    
+    public Gun gun;    
 
     void Start()
     {
-        gun = GameObject.FindGameObjectWithTag("Gun");
+        gun = FindObjectOfType<Gun>();
     }
     
     void OnTriggerEnter(Collider other) 
     {
         if(other.gameObject.tag == "Player")
         {
-            gun.GetComponent<Gun>().BagAmmo = gun.GetComponent<Gun>().BagAmmo + 10;
+            gun.BagAmmo = gun.BagAmmo + 10;
             Destroy(gameObject);
         }
     }
