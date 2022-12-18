@@ -13,6 +13,9 @@ public class Waves : MonoBehaviour
     public int maxZombiesOnWave = 10;
     public int ZombieKillsOnWave;
 
+    public int ZombieHealthAdding;
+    public int ZombieDamageAdding;
+
     void Update()
     {        
         if(ZombieKillsOnWave >= maxZombiesOnWave)
@@ -34,6 +37,9 @@ public class Waves : MonoBehaviour
         ZombieKillsOnWave = 0;
 
         WavesCount++;
+
+        ZombieHealthAdding = ZombieHealthAdding + 50;
+        ZombieDamageAdding = ZombieDamageAdding + 5;
 
         for (int countZombies = 0; countZombies < ZombieCount.Length; countZombies++)
         {
