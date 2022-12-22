@@ -14,21 +14,41 @@ public class MouseLook : MonoBehaviour
 
     public GameObject player;
     public Animator PlayerAnimator;
+    public MobileController _mobileControllerMovement;
+    public MobileController _mobileControllerRotate;
 
 
     void Start() 
     {
         // Запрещаем указателю выходить за рамки окна игра
-        Cursor.lockState = CursorLockMode.Locked; 
+        // Cursor.lockState = CursorLockMode.Locked; 
 
         PlayerAnimator = player.GetComponent<Animator>();
+        _mobileControllerMovement = GameObject.FindGameObjectWithTag("Joystick_BG").GetComponent<MobileController>();
+        _mobileControllerRotate = GameObject.FindGameObjectWithTag("Joystick_BG_Rotate").GetComponent<MobileController>();
     }
 
     void Update()
     {
         // Получаем координаты мышки
-        turn.x += Input.GetAxis("Mouse X") * sensitivity;
-        turn.y += Input.GetAxis("Mouse Y") * sensitivity;
+        if(Input.GetAxis("Mouse X") != 0)
+        {
+            turn.x += Input.GetAxis("Mouse X") * sensitivity;
+        }
+        else 
+        {
+            turn.x += _mobileControllerRotate.Horizontal() * sensitivity;
+        }
+
+        if(Input.GetAxis("Mouse Y") != 0)
+        {
+            turn.y += Input.GetAxis("Mouse Y") * sensitivity;
+        }
+        else 
+        {
+            turn.y += _mobileControllerRotate.Vertical() * sensitivity;
+        }
+
         // Ограничиваем поворот камеры по оси Y 
         turn.y = Mathf.Clamp(turn.y, -20, 20);
 
@@ -38,8 +58,8 @@ public class MouseLook : MonoBehaviour
         player.transform.localRotation = Quaternion.Euler(0, turn.x, 0);
 
         // Применяем движение для игрока
-        horizontalMove = Input.GetAxis("Horizontal");
-        verticalMove = Input.GetAxis("Vertical");
+        horizontalMove = _mobileControllerMovement.Horizontal();
+        verticalMove = _mobileControllerMovement.Vertical();
         deltaMove = new Vector3(horizontalMove, 0, verticalMove) * speed * Time.deltaTime;
         player.transform.Translate(deltaMove); 
 

@@ -26,11 +26,12 @@ public class RandomSpawnZombies : MonoBehaviour
         while(true)
         {      
             if(_waves.ZombieCount.Length < _waves.maxZombiesOnWave)
-            {                
-                SpawnPlace = new Vector3(Random.Range(-25, 25), 10.6f, Random.Range(-7, 7));
+            {        
+                yield return new WaitForSeconds(SpawnTime);         
+                SpawnPlace = new Vector3(Random.Range(-15, 15), 10.6f, Random.Range(-7, 7));
                 SpawnTime = Random.Range(minSpawnTime, maxSpawnTime);
-                Instantiate(YakuZombie.gameObject, SpawnPlace, Quaternion.identity);
-                yield return new WaitForSeconds(SpawnTime); 
+                Instantiate(YakuZombie, SpawnPlace, Quaternion.identity);
+                
             }   
             else
             {
