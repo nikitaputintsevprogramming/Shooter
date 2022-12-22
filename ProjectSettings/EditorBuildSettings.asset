@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mountains.unity
     guid: 18cb0563e7033b442a140d1c472b988c
+  - enabled: 1
+    path: Assets/Scenes/TouchStudy/TouchStudy.unity
+    guid: 855f448b469849747bbcdf70da012cdc
   m_configObjects: {}

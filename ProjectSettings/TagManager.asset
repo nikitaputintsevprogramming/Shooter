@@ -8,6 +8,8 @@ TagManager:
   - Gun
   - Zombie
   - PanelSettings
+  - Joystick_BG
+  - Joystick_BG_Rotate
   layers:
   - Default
   - TransparentFX
